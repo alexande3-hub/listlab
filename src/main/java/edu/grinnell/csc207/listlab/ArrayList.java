@@ -4,20 +4,28 @@ package edu.grinnell.csc207.listlab;
  * An array-based implementation of the list ADT.
  */
 public class ArrayList {
+
+    int[] data = null;
+    int size = 0;
+
+
+
+
     /**
      * Adds <code>value</code> to the end of the list
      * 
      * @param value the value to add to the end of the list
      */
     public void add(int value) {
-        throw new UnsupportedOperationException("Unimplemented method 'add'");
+        data[size] = value;
+        size++;
     }
 
     /**
      * @return the number of elements in the list
      */
     public int size() {
-        throw new UnsupportedOperationException("Unimplemented method 'size'");
+        return size;
     }
 
     /**
@@ -25,7 +33,7 @@ public class ArrayList {
      * @return the value at the specified <code>index</code>
      */
     public int get(int index) {
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
+        return data[index];
     }
 
     /**
@@ -35,6 +43,12 @@ public class ArrayList {
      * @return the element at <code>index</code>
      */
     public int remove(int index) {
-        throw new UnsupportedOperationException("Unimplemented method 'remove'");
+        int goal = data[index];
+        for (int i = index; i < size; i++) {
+            data[i] = data[i + 1];
+        } size--;
+        return goal;
     }
+
+    
 }
