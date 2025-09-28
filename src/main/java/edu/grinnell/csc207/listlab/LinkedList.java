@@ -4,13 +4,9 @@ package edu.grinnell.csc207.listlab;
  * A linked implementation of the list ADT.
  */
 public class LinkedList {
-
-
-
     private static class Node {
-        public int value;
-        public Node next;
-    
+        int value;
+        Node next;
         public Node(int value, Node next) {
             this.value = value;
             this.next = next;
@@ -19,9 +15,11 @@ public class LinkedList {
 
     private Node first;
 
-    public LinkedList(){
-        this.first = null;
+    public LinkedList() {
+        first = null;
     }
+
+
 
     /**
      * Adds <code>value</code> to the end of the list
@@ -29,11 +27,16 @@ public class LinkedList {
      * @param value the value to add to the end of the list
      */
     public void add(int value) {
-        Node new_node = new Node(value, null);
-        Node current = this.first;
-        while (current != null) {
-            current = current.next;
-        } current = new_node;
+        if (this.first == null) {
+            this.first = new Node(0, null);
+            this.first.value = value;
+        } else {
+            Node new_node = new Node(value, null);
+            Node current = this.first;
+            while (current.next != null) {
+                current = current.next;
+            } current.next = new_node;
+        }
     }
 
     /**

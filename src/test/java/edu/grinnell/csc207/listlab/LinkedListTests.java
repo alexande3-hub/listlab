@@ -24,6 +24,26 @@ public class LinkedListTests {
         assertEquals(10, list.size());
     }
 
+    @Test
+    public void get2() {
+        LinkedList list = new LinkedList();
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        assertEquals(5, list.get(2));
+    }
+
+    @Test
+    public void remove1() {
+        LinkedList list = new LinkedList();
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        assertEquals(4, list.remove(1));
+    }
+
+
+
     @Property
     public boolean listAddSize(@ForAll @IntRange(min = 0, max = 1000) int sz) {
         LinkedList list = new LinkedList();
@@ -32,4 +52,16 @@ public class LinkedListTests {
         }
         return list.size() == sz;
     }
+
+    @Property
+    public boolean listGet(@ForAll @IntRange(min = 0, max = 1000) int sz) {
+        LinkedList list = new LinkedList();
+        int getSum = 0;
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        getSum = list.get(0) + list.get(1) + list.get(2);
+        return getSum == 12;
+    }
+
 }

@@ -24,6 +24,24 @@ public class ArrayListTests {
         assertEquals(10, list.size());
     }
 
+    @Test
+    public void get2() {
+        ArrayList list = new ArrayList();
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        assertEquals(5, list.get(2));
+    }
+
+    @Test
+    public void remove1() {
+        ArrayList list = new ArrayList();
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        assertEquals(4, list.remove(1));
+    }
+
     @Property
     public boolean listAddSize(@ForAll @IntRange(min = 0, max = 1000) int sz) {
         ArrayList list = new ArrayList();
@@ -32,4 +50,16 @@ public class ArrayListTests {
         }
         return list.size() == sz;
     }
+
+    @Property
+    public boolean listGet(@ForAll @IntRange(min = 0, max = 1000) int sz) {
+        ArrayList list = new ArrayList();
+        int getSum = 0;
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        getSum = list.get(0) + list.get(1) + list.get(2);
+        return getSum == 12;
+    }
+
 }
